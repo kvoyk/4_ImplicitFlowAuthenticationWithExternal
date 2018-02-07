@@ -1,0 +1,38 @@
+﻿@using MLaw.Idp.Mvc.Models
+@model MLaw.Idp.Mvc.Models.LogingViewModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<h2>@ViewData["Title"]</h2>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+
+        <form asp-action="Login" method="post" class="form-horizontal">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @Html.HiddenFor(model => model.RedirectUrl)
+            @Html.HiddenFor(model => model.State)
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Name"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="Email"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidationCode"></label>
+                <input asp-for="ValidationCode" class="form-control" placeholder="Enter 'code' for validation code"    />
+                <span asp-validation-for="ValidationCode" class="text-danger" ></span>
+            </div>
+            <div>    
+                <button type="submit" class="btn btn-default" name="Authenticate" value="Authenticate" title="Log in using your account">Authenticate</button>
+                </div>
+        </form>
+    </div>
+
+</div>
